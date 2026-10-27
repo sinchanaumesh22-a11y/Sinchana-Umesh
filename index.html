@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Artisanal Roastery &amp; Café | Specialty Coffee, Fresh Bakes &amp; Sanctuary</title>
+  <meta name="description" content="Welcome to AURA Artisanal Roastery &amp; Café. Experience ethically sourced single-origin coffees, handcrafted espresso, freshly baked viennoiserie, and cozy warm ambiance. Reserve a table or order online.">
+  <meta name="keywords" content="artisanal cafe, specialty coffee, micro-roastery, brunch cafe, pour over, single origin espresso, bakery, table reservation">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons for polished visuals -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+  <!-- Steam Particle Canvas Effect in Background -->
+  <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container announcement-content">
+      <span class="announcement-pill"><i class="fa-solid fa-fire-flame-curved"></i> Fresh Batch</span>
+      <p>Today's Featured Roast: <strong>Ethiopian Yirgacheffe G1 (Bergamot &amp; Jasmine Honey)</strong> • Free tasting flight every Saturday 10 AM</p>
+      <div class="announcement-actions">
+        <span class="status-live"><span class="pulse-dot"></span> Café Open Now (Closes 10:00 PM)</span>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Ambiance Mode" title="Switch between Midnight Roast &amp; Golden Hour">
+          <i class="fa-solid fa-moon theme-icon"></i>
+          <span class="theme-text">Ambiance</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" id="brandLogo">
+        <div class="logo-symbol">
+          <i class="fa-solid fa-mug-hot"></i>
+          <span class="steam-ring"></span>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">AURA</span>
+          <span class="brand-tagline">ROASTERY &amp; CAFÉ</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#menu" class="nav-link">Artisan Menu</a></li>
+          <li><a href="#brew-calculator" class="nav-link">Brew Guide</a></li>
+          <li><a href="#ambiance" class="nav-link">Ambiance</a></li>
+          <li><a href="#reservations" class="nav-link">Reserve Table</a></li>
+          <li><a href="#contact" class="nav-link">Visit Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="cart-trigger-btn" id="openCartBtn" aria-label="View Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartBadgeCount">0</span>
+          <span class="cart-label">My Bag</span>
+        </button>
+
+        <a href="#reservations" class="btn btn-primary nav-cta-btn">
+          <span>Book a Table</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Open mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <span class="brand-name">AURA CAFÉ</span>
+        <button class="close-drawer-btn" id="closeMobileDrawer">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-link">Home</a></li>
+        <li><a href="#story" class="mobile-link">Our Story</a></li>
+        <li><a href="#menu" class="mobile-link">Artisan Menu</a></li>
+        <li><a href="#brew-calculator" class="mobile-link">Brew Guide &amp; Ratios</a></li>
+        <li><a href="#ambiance" class="mobile-link">Ambiance &amp; Spaces</a></li>
+        <li><a href="#reservations" class="mobile-link">Reserve a Table</a></li>
+        <li><a href="#contact" class="mobile-link">Location &amp; Hours</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#reservations" class="btn btn-primary btn-block">Reserve a Table</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge animate-fade-in">
+            <i class="fa-solid fa-award"></i>
+            <span>Award-Winning Micro-Roastery • Voted Best City Café 2026</span>
+          </div>
+
+          <h1 class="hero-title animate-slide-up">
+            Crafted With <span class="highlight-text">Soul</span>,<br>
+            Brewed To <span class="gold-gradient-text">Perfection</span>.
+          </h1>
+
+          <p class="hero-description animate-slide-up delay-1">
+            Step into an elevated sensory haven where sustainably sourced, high-altitude micro-lots meet delicate steam, buttery viennoiserie, and the lingering fragrance of freshly roasted beans.
+          </p>
+
+          <div class="hero-cta-group animate-slide-up delay-2">
+            <a href="#menu" class="btn btn-primary btn-glow">
+              <i class="fa-solid fa-mug-saucer"></i>
+              <span>Explore The Menu</span>
+            </a>
+            <a href="#reservations" class="btn btn-glass">
+              <i class="fa-regular fa-calendar-check"></i>
+              <span>Reserve Table</span>
+            </a>
+            <button class="btn btn-outline-icon" id="quickBrewModalBtn" title="Our Roasting Process">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>Artisan Roasting</span>
+            </button>
+          </div>
+
+          <!-- Hero Metrics / Badges -->
+          <div class="hero-metrics animate-slide-up delay-3">
+            <div class="metric-item">
+              <span class="metric-num">100%</span>
+              <span class="metric-label">Single Origin Arabica</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">48h</span>
+              <span class="metric-label">Peak Roast Rest Cycle</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">4.9 <i class="fa-solid fa-star gold-star"></i></span>
+              <span class="metric-label">1,400+ Verified Guests</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-showcase animate-fade-in delay-2">
+          <div class="card-glass hero-card-main">
+            <div class="hero-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80" alt="Artisanal Aura Cafe interior with warm lighting and espresso bar" class="hero-img" loading="eager">
+              <div class="floating-badge badge-top-right">
+                <i class="fa-solid fa-sparkles"></i>
+                <div>
+                  <strong>Slow Pour Chemex</strong>
+                  <small>Brew temp: 93°C • 1:16 ratio</small>
+                </div>
+              </div>
+              <div class="floating-badge badge-bottom-left">
+                <div class="avatar-ring">
+                  <i class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                  <strong>Master Roaster On-Site</strong>
+                  <small>Daily micro-batches roasted at 7 AM</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#story" class="scroll-indicator" aria-label="Scroll down to story">
+        <span>Scroll to explore</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Quick Features / Values Banner -->
+    <section class="values-banner">
+      <div class="container">
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div class="value-text">
+              <h3>Direct Trade Sourcing</h3>
+              <p>Ethical partnerships with regenerative family estates in Ethiopia, Colombia, &amp; Guatemala.</p>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="value-text">
+              <h3>Cast Iron Roasting</h3>
+              <p>Small-batch convection roasting profiling each varietal’s natural floral and chocolate terroir.</p>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-bread-slice"></i></div>
+            <div class="value-text">
+              <h3>Scratch Bakery</h3>
+              <p>Laminated French viennoiserie, French butter croissants, &amp; sourdough baked at sunrise.</p>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-wifi"></i></div>
+            <div class="value-text">
+              <h3>Sanctuary Ambiance</h3>
+              <p>Acoustically tuned, lush green plants, warm golden tones, and cozy workspace corners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story & Craftsmanship Section -->
+    <section class="section story-section" id="story">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-visuals">
+            <div class="visual-stack">
+              <div class="story-img-main-wrapper">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Master roaster inspecting coffee beans" class="story-img story-img-1">
+              </div>
+              <div class="story-img-secondary-wrapper">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80" alt="Espresso extraction with golden crema" class="story-img story-img-2">
+                <div class="story-stamp">
+                  <span class="stamp-year">EST.</span>
+                  <span class="stamp-highlight">2019</span>
+                  <span class="stamp-sub">Artisan Roastery</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-content">
+            <div class="section-tag">
+              <i class="fa-solid fa-compass"></i>
+              <span>Our Philosophy</span>
+            </div>
+            <h2 class="section-title">
+              More than a cup.<br>
+              An intentional <span class="gold-gradient-text">ritual</span>.
+            </h2>
+            <p class="section-lead">
+              Founded on the belief that coffee is culinary poetry, AURA is an antidote to rushed mornings. Here, water temperature is calibrated to the exact degree, milk is textured into silk, and every bean has a name, an altitude, and an origin family.
+            </p>
+            <p class="story-body">
+              Whether you are settling into a velvet armchair with an Ethiopian pour-over, pairing a warm pistachio croissant with our velvet Spanish latte, or gathering around our community roaster table, AURA was built to be your third place—between work and home.
+            </p>
+
+            <!-- Interactive Roast Profile Selector -->
+            <div class="roast-profile-explorer">
+              <h4 class="roast-explorer-title">Explore Our Roast Profiles:</h4>
+              <div class="roast-tabs" role="tablist">
+                <button class="roast-tab active" data-roast="light" role="tab">Light • Nordic Style</button>
+                <button class="roast-tab" data-roast="medium" role="tab">Medium • Balanced House</button>
+                <button class="roast-tab" data-roast="dark" role="tab">Dark • Midnight Velvet</button>
+              </div>
+
+              <div class="roast-card-display" id="roastDisplay">
+                <div class="roast-header">
+                  <span class="roast-name" id="roastName">Yirgacheffe Bloom (Light Roast)</span>
+                  <span class="roast-altitude" id="roastAltitude"><i class="fa-solid fa-mountain"></i> 2,150 MASL</span>
+                </div>
+                <div class="roast-notes-tags" id="roastNotes">
+                  <span class="flavor-tag">Bergamot</span>
+                  <span class="flavor-tag">Jasmine Flower</span>
+                  <span class="flavor-tag">Wild Honey</span>
+                  <span class="flavor-tag">Bright Citric</span>
+                </div>
+                <div class="roast-meter-group">
+                  <div class="meter-bar-item">
+                    <span>Acidity:</span>
+                    <div class="meter-track"><div class="meter-fill" id="meterAcidity" style="width: 85%;"></div></div>
+                  </div>
+                  <div class="meter-bar-item">
+                    <span>Sweetness:</span>
+                    <div class="meter-track"><div class="meter-fill" id="meterSweetness" style="width: 80%;"></div></div>
+                  </div>
+                  <div class="meter-bar-item">
+                    <span>Body:</span>
+                    <div class="meter-track"><div class="meter-fill" id="meterBody" style="width: 45%;"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="signature-quote">
+              <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <p>"We don't mask the coffee; we honor the farmer's season in every extraction."</p>
+              <div class="quote-author">
+                <strong>Matteo Rossi</strong> — Head of Roasting &amp; Q-Grader
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Artisan Menu Section with Filters & Ordering -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag center">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Curated Offerings</span>
+          </div>
+          <h2 class="section-title">The Seasonal <span class="gold-gradient-text">Artisan Menu</span></h2>
+          <p class="section-subtitle">
+            Every beverage is custom crafted to your exact milk, temperature, and roast preference. Click any item for quick tasting notes or to add to your order.
+          </p>
+        </div>
+
+        <!-- Menu Controls (Category Pills & Search) -->
+        <div class="menu-controls">
+          <div class="menu-categories" role="tablist">
+            <button class="cat-pill active" data-category="all">
+              <i class="fa-solid fa-border-all"></i> All Items
+            </button>
+            <button class="cat-pill" data-category="coffee">
+              <i class="fa-solid fa-mug-hot"></i> Specialty Coffee
+            </button>
+            <button class="cat-pill" data-category="cold">
+              <i class="fa-solid fa-glass-water-droplet"></i> Cold &amp; Nitro Brews
+            </button>
+            <button class="cat-pill" data-category="tea">
+              <i class="fa-solid fa-leaf"></i> Matcha &amp; Rare Teas
+            </button>
+            <button class="cat-pill" data-category="bakery">
+              <i class="fa-solid fa-bread-slice"></i> Artisan Bakery
+            </button>
+            <button class="cat-pill" data-category="brunch">
+              <i class="fa-solid fa-egg"></i> Gourmet Brunch
+            </button>
+          </div>
+
+          <div class="menu-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="menuSearchInput" placeholder="Search coffee, pastries, vegan..." aria-label="Search menu items">
+            <button class="search-clear-btn" id="searchClearBtn" style="display:none;" aria-label="Clear search">&times;</button>
+          </div>
+        </div>
+
+        <!-- Dietary Quick Filters -->
+        <div class="dietary-filter-bar">
+          <span class="dietary-label"><i class="fa-solid fa-filter"></i> Filter by:</span>
+          <button class="dietary-chip" data-diet="all">All</button>
+          <button class="dietary-chip" data-diet="signature"><i class="fa-solid fa-star"></i> House Signature</button>
+          <button class="dietary-chip" data-diet="vegan"><i class="fa-solid fa-leaf"></i> 100% Plant-Based</button>
+          <button class="dietary-chip" data-diet="gf"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> Gluten-Free Option</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menuGrid">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Menu Footer Callout -->
+        <div class="menu-footer-callout">
+          <div class="callout-card">
+            <div class="callout-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+            <div class="callout-text">
+              <h4>Custom Milk &amp; Roasting Bar</h4>
+              <p>Oat milk (Oatly Barista), Homemade Almond Milk, Organic A2 Whole Milk, &amp; Coconut Milk available at no surcharge. Decaf Swiss-Water process available on all espresso.</p>
+            </div>
+            <a href="#reservations" class="btn btn-outline">Reserve Tasting Table</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Coffee-to-Water Brew Ratio Calculator -->
+    <section class="section brew-calculator-section" id="brew-calculator">
+      <div class="container">
+        <div class="calculator-card">
+          <div class="calculator-header">
+            <div class="calc-tag"><i class="fa-solid fa-flask"></i> Interactive Barista Lab</div>
+            <h2 class="calc-title">Precision Brew Ratio Calculator</h2>
+            <p class="calc-desc">
+              Brew cafe-quality coffee at home. Select your brewing device and desired number of cups to get the precise golden ratio of coffee grounds, water weight, grind size, and water temperature.
+            </p>
+          </div>
+
+          <div class="calculator-body-grid">
+            <!-- Left Controls -->
+            <div class="calc-controls">
+              <div class="control-group">
+                <label class="control-label">1. Choose Brewing Method</label>
+                <div class="brew-methods-grid">
+                  <button class="brew-method-btn active" data-method="v60">
+                    <i class="fa-solid fa-filter"></i>
+                    <span>Hario V60</span>
+                    <small>1:16 ratio</small>
+                  </button>
+                  <button class="brew-method-btn" data-method="chemex">
+                    <i class="fa-solid fa-wine-glass"></i>
+                    <span>Chemex</span>
+                    <small>1:15 ratio</small>
+                  </button>
+                  <button class="brew-method-btn" data-method="frenchpress">
+                    <i class="fa-solid fa-jar"></i>
+                    <span>French Press</span>
+                    <small>1:14 ratio</small>
+                  </button>
+                  <button class="brew-method-btn" data-method="aeropress">
+                    <i class="fa-solid fa-compress"></i>
+                    <span>AeroPress</span>
+                    <small>1:12 ratio</small>
+                  </button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <div class="label-with-value">
+                  <label class="control-label" for="cupsRange">2. Number of Cups (approx. 250ml / cup)</label>
+                  <span class="range-val" id="cupsValueDisplay">2 Cups (500 ml)</span>
+                </div>
+                <input type="range" id="cupsRange" min="1" max="6" value="2" step="1" class="custom-slider">
+                <div class="slider-ticks">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">3. Brew Strength Preference</label>
+                <div class="strength-pills">
+                  <button class="strength-pill" data-strength="delicate">Delicate (1:17)</button>
+                  <button class="strength-pill active" data-strength="balanced">Golden Standard</button>
+                  <button class="strength-pill" data-strength="rich">Rich &amp; Bold (1:14)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Results Display -->
+            <div class="calc-results-panel">
+              <div class="results-inner">
+                <div class="result-badge"><i class="fa-solid fa-check"></i> Dialed-In Recipe</div>
+
+                <div class="metric-highlight-grid">
+                  <div class="highlight-box gold-border">
+                    <span class="box-label">Coffee Dose</span>
+                    <div class="box-value" id="calcCoffeeDose">31.2 <span class="unit">g</span></div>
+                    <small class="box-hint">Fresh whole bean weighed</small>
+                  </div>
+                  <div class="highlight-box">
+                    <span class="box-label">Filtered Water</span>
+                    <div class="box-value" id="calcWaterWeight">500 <span class="unit">g / ml</span></div>
+                    <small class="box-hint">Target output</small>
+                  </div>
+                </div>
+
+                <div class="recipe-parameters-list">
+                  <div class="param-row">
+                    <span class="param-name"><i class="fa-solid fa-temperature-three-quarters"></i> Ideal Water Temp:</span>
+                    <strong class="param-val" id="calcWaterTemp">93°C (200°F)</strong>
+                  </div>
+                  <div class="param-row">
+                    <span class="param-name"><i class="fa-solid fa-gear"></i> Grind Consistency:</span>
+                    <strong class="param-val" id="calcGrindSize">Medium-Fine (Sea Salt)</strong>
+                  </div>
+                  <div class="param-row">
+                    <span class="param-name"><i class="fa-solid fa-stopwatch"></i> Target Brew Time:</span>
+                    <strong class="param-val" id="calcBrewTime">3 min 15 sec</strong>
+                  </div>
+                  <div class="param-row">
+                    <span class="param-name"><i class="fa-solid fa-droplet"></i> Bloom Water (30-45s):</span>
+                    <strong class="param-val" id="calcBloom">65 g</strong>
+                  </div>
+                </div>
+
+                <div class="interactive-timer-box">
+                  <div class="timer-display" id="brewTimerDisplay">00:00</div>
+                  <div class="timer-controls">
+                    <button class="btn btn-sm btn-gold" id="startTimerBtn"><i class="fa-solid fa-play"></i> Start Brew Timer</button>
+                    <button class="btn btn-sm btn-outline" id="resetTimerBtn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                  </div>
+                  <small class="timer-guide" id="timerStepGuide">Click start when initiating first water pour</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ambiance & Interior Gallery Section -->
+    <section class="section ambiance-section" id="ambiance">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag center">
+            <i class="fa-solid fa-camera"></i>
+            <span>The Atmosphere</span>
+          </div>
+          <h2 class="section-title">Designed For <span class="gold-gradient-text">Slow Living</span></h2>
+          <p class="section-subtitle">
+            Warm walnut wood, natural Italian travertine marble, cascading philodendrons, and acoustics calibrated for serene conversation, reading, and creative flow.
+          </p>
+        </div>
+
+        <!-- Gallery Grid with Lightbox / Expand -->
+        <div class="ambiance-gallery-grid">
+          <div class="gallery-item large" data-caption="The Main Espresso Bar &amp; Travertine Island">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Main espresso bar at Aura Cafe" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Heart of Aura</span>
+              <h3>The Main Roastery Bar</h3>
+              <p>Where custom La Marzocco machine extractions take center stage.</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-caption="Cozy Sunlit Reading Nook">
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Cozy reading nook with armchairs" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Reading Nook</span>
+              <h3>The Library Corner</h3>
+              <p>Lined with art books and cozy velvet armchairs.</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-caption="Sunlit Garden Patio">
+            <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80" alt="Sunlit outdoor garden patio" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Al Fresco</span>
+              <h3>Sunlit Garden Terrace</h3>
+              <p>Shaded by olive trees with breezy open-air seating.</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-caption="Artisan Bakery Display">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pastry display case at Aura Cafe" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Morning Sunrise</span>
+              <h3>The Pastry Atelier</h3>
+              <p>Fresh batches brought straight from the ovens every hour.</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-caption="Latte Art &amp; Slow Pours">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80" alt="Barista pouring intricate swan latte art" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Barista Craft</span>
+              <h3>Latte Artistry</h3>
+              <p>Every pour shaped with intention and precision.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ambiance Amenities Badges -->
+        <div class="amenities-row">
+          <div class="amenity-chip"><i class="fa-solid fa-wifi"></i> 1Gbps High-Speed Wi-Fi</div>
+          <div class="amenity-chip"><i class="fa-solid fa-plug"></i> Laptop Power Outlets At Every Table</div>
+          <div class="amenity-chip"><i class="fa-solid fa-paw"></i> Dog &amp; Pet Friendly Patio</div>
+          <div class="amenity-chip"><i class="fa-solid fa-music"></i> Curated Lo-Fi &amp; Jazz Vinyl Playlist</div>
+          <div class="amenity-chip"><i class="fa-solid fa-wheelchair"></i> Wheelchair Accessible</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Reservation Section -->
+    <section class="section reservation-section" id="reservations">
+      <div class="container">
+        <div class="reservation-card-wrapper">
+          <div class="reservation-grid">
+            <!-- Left Info Panel -->
+            <div class="res-info-col">
+              <div class="section-tag">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Table Hospitality</span>
+              </div>
+              <h2 class="res-heading">
+                Reserve Your <br><span class="gold-gradient-text">Sanctuary Table</span>
+              </h2>
+              <p class="res-desc">
+                Whether organizing a morning creative sprint, weekend slow brunch with friends, or an intimate coffee cupping session, book your table in advance with instant confirmation.
+              </p>
+
+              <div class="res-perks-list">
+                <div class="perk-item">
+                  <div class="perk-icon"><i class="fa-solid fa-clock"></i></div>
+                  <div>
+                    <strong>15-Minute Grace Period</strong>
+                    <p>We hold your preferred table with fresh water upon arrival.</p>
+                  </div>
+                </div>
+                <div class="perk-item">
+                  <div class="perk-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                  <div>
+                    <strong>Complimentary Welcome Cold Drip</strong>
+                    <p>Every reserved party enjoys our house fermented slow-drip shot.</p>
+                  </div>
+                </div>
+                <div class="perk-item">
+                  <div class="perk-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+                  <div>
+                    <strong>Dedicated Table Service</strong>
+                    <p>Order directly from your seat without waiting in line.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Busy Hours Status -->
+              <div class="cafe-vibe-meter">
+                <div class="vibe-header">
+                  <span>Current Vibe &amp; Wait Time:</span>
+                  <span class="vibe-status-badge"><span class="pulse-dot green"></span> Calm &amp; Relaxed</span>
+                </div>
+                <div class="vibe-bar">
+                  <div class="vibe-fill" style="width: 38%;"></div>
+                </div>
+                <small class="vibe-note"><i class="fa-regular fa-clock"></i> Walk-in wait time: ~5 mins • Open tables available</small>
+              </div>
+            </div>
+
+            <!-- Right Interactive Form -->
+            <div class="res-form-col">
+              <form class="reservation-form" id="tableBookingForm">
+                <h3 class="form-title">Book an Experience</h3>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label for="resName">Full Name *</label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-user"></i>
+                      <input type="text" id="resName" required placeholder="Elena Vance">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="resPhone">Phone Number *</label>
+                    <div class="input-with-icon">
+                      <i class="fa-solid fa-phone"></i>
+                      <input type="tel" id="resPhone" required placeholder="+1 (555) 392-1849">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label for="resEmail">Email Address</label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-envelope"></i>
+                      <input type="email" id="resEmail" required placeholder="elena@example.com">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="resGuests">Number of Guests</label>
+                    <div class="input-with-icon">
+                      <i class="fa-solid fa-users"></i>
+                      <select id="resGuests" required>
+                        <option value="1">1 Person (Solo Workspace)</option>
+                        <option value="2" selected>2 Guests (Intimate Table)</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests (Booth)</option>
+                        <option value="5">5 - 6 Guests</option>
+                        <option value="group">7+ Guests (Private Cupping Room)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label for="resDate">Preferred Date *</label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-calendar"></i>
+                      <input type="date" id="resDate" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="resTime">Preferred Time Slot *</label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-clock"></i>
+                      <select id="resTime" required>
+                        <option value="08:00 AM">08:00 AM - Sunrise Pour</option>
+                        <option value="09:30 AM">09:30 AM - Morning Rush</option>
+                        <option value="11:00 AM" selected>11:00 AM - Brunch &amp; Brews</option>
+                        <option value="01:00 PM">01:00 PM - Midday Refuel</option>
+                        <option value="03:30 PM">03:30 PM - Afternoon Tea &amp; Cake</option>
+                        <option value="06:00 PM">06:00 PM - Twilight Roast Flight</option>
+                        <option value="08:00 PM">08:00 PM - Late Night Acoustics</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Seating Preference</label>
+                  <div class="seating-options-row">
+                    <label class="seating-radio-label">
+                      <input type="radio" name="seatingZone" value="Main Dining &amp; Roastery" checked>
+                      <span class="radio-chip"><i class="fa-solid fa-mug-hot"></i> Main Roastery Bar</span>
+                    </label>
+                    <label class="seating-radio-label">
+                      <input type="radio" name="seatingZone" value="Garden Patio Terrace">
+                      <span class="radio-chip"><i class="fa-solid fa-sun"></i> Sunlit Garden Patio</span>
+                    </label>
+                    <label class="seating-radio-label">
+                      <input type="radio" name="seatingZone" value="Quiet Library Workspace">
+                      <span class="radio-chip"><i class="fa-solid fa-book-open"></i> Quiet Library Nook</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="resNotes">Special Dietary Notes or Occasion</label>
+                  <textarea id="resNotes" rows="2" placeholder="e.g. Birthday, celebrating an anniversary, dairy allergy, high chair needed..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-glow" id="submitBookingBtn">
+                  <span>Confirm Reservation</span>
+                  <i class="fa-solid fa-check"></i>
+                </button>
+
+                <p class="form-privacy-note">
+                  <i class="fa-solid fa-shield-halved"></i> Instant SMS &amp; Email Confirmation • Free Cancellation up to 1 hr prior
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Guest Love Carousel -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag center">
+            <i class="fa-solid fa-quote-right"></i>
+            <span>Guest Experiences</span>
+          </div>
+          <h2 class="section-title">Loved by Coffee <span class="gold-gradient-text">Connoisseurs</span></h2>
+          <div class="overall-rating-badge">
+            <div class="stars-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span><strong>4.92 / 5.0</strong> based on 1,420+ verified Google &amp; Yelp reviews</span>
+          </div>
+        </div>
+
+        <div class="reviews-slider-wrapper">
+          <div class="reviews-track" id="reviewsTrack">
+            <!-- Review 1 -->
+            <div class="review-card">
+              <div class="review-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">
+                "Hands down the best flat white in the entire state. You can genuinely taste the floral sweetness in their Ethiopian pour-over without any harsh bitterness. The almond croissant was still warm with flaky layers that shattered delicately."
+              </p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Reviewer Sophia Lin">
+                </div>
+                <div class="reviewer-info">
+                  <strong>Sophia Lin</strong>
+                  <span>Food &amp; Lifestyle Critic, Gastronome Magazine</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+              <div class="review-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">
+                "AURA is my creative sanctuary. As a remote designer, finding a place with world-class specialty coffee, ultra-fast Wi-Fi, respectful acoustics, and warm lighting is nearly impossible. Their Spanish Latte with homemade cinnamon syrup is addictive!"
+              </p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Reviewer Marcus Thorne">
+                </div>
+                <div class="reviewer-info">
+                  <strong>Marcus Thorne</strong>
+                  <span>Architect &amp; Daily Regular</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+              <div class="review-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">
+                "We booked their private cupping table for a team brunch. The baristas explained each origin's story with so much passion. The truffle avocado toast and ceremonial matcha latte were unforgettable. 10/10 hospitality!"
+              </p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Reviewer Camille Dupuis">
+                </div>
+                <div class="reviewer-info">
+                  <strong>Camille Dupuis</strong>
+                  <span>Sommelier &amp; Coffee Enthusiast</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Dots -->
+          <div class="carousel-dots" id="carouselDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-container">
+        <div class="section-header text-center">
+          <div class="section-tag center">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Curiosities &amp; Inquiries</span>
+          </div>
+          <h2 class="section-title">Frequently Asked <span class="gold-gradient-text">Questions</span></h2>
+        </div>
+
+        <div class="accordion-wrapper">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Do you sell whole-bean coffee for home brewing?</span>
+              <i class="fa-solid fa-plus acc-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Yes! We roast fresh micro-batches four times a week. Every bag includes roast date, farmer estate, varietal, and processing method notes. We can also grind your beans on our Mahlkönig EK43 tailored to your exact home setup (Aeropress, French Press, Espresso, or Pour-over) free of charge.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Are there dairy-free, vegan, and gluten-friendly options?</span>
+              <i class="fa-solid fa-plus acc-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Absolutely. We serve barista-edition oat milk, house-pressed raw almond milk, and organic coconut milk with zero additional upcharge. Our bakery counter always features certified gluten-free cakes and vegan chocolate babka loaves baked daily.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Can I work remotely on my laptop at the café?</span>
+              <i class="fa-solid fa-plus acc-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>You are warmly welcome! We provide complimentary fiber-optic 1Gbps Wi-Fi and power outlets under almost every bench in our Library and Roastery zones. We kindly ask guests to observe headphone etiquette during calls.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Do you host private events, workshops, or coffee tastings?</span>
+              <i class="fa-solid fa-plus acc-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Yes, we host monthly latte art masterclasses, sensory cupping workshops, and private evening gatherings after 7:30 PM. Drop us a note via our contact form or speak directly with our floor manager.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Us / Contact & Hours Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card-grid">
+          <div class="contact-details-box">
+            <div class="section-tag">
+              <i class="fa-solid fa-map-pin"></i>
+              <span>Find Sanctuary</span>
+            </div>
+            <h2 class="contact-title">Visit Our Roastery &amp; Café</h2>
+            <p class="contact-intro">Located in the vibrant Arts District. Parking is available in our rear courtyard or street metered parking.</p>
+
+            <div class="contact-info-list">
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <strong>Address</strong>
+                  <p>418 St. Clair Avenue, Suite 100<br>Historic Arts District, Metropolis 10012</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                  <strong>Hours of Hospitality</strong>
+                  <p>Monday – Friday: 06:30 AM – 09:00 PM<br>Saturday &amp; Sunday: 07:30 AM – 10:00 PM<br><em>Fresh bakery warm runs: 7 AM &amp; 1 PM</em></p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <strong>Direct Inquiries</strong>
+                  <p>Table Concierge: (555) 742-8921<br>Email: concierge@auracafe.com</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links-row">
+              <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="social-icon" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+            </div>
+          </div>
+
+          <!-- Interactive Map / Location Preview -->
+          <div class="contact-map-box">
+            <div class="map-placeholder">
+              <div class="map-pin-pulse">
+                <i class="fa-solid fa-mug-hot"></i>
+              </div>
+              <div class="map-info-card">
+                <h4>AURA Roastery &amp; Café</h4>
+                <p>418 St. Clair Ave • Valet &amp; Bike Racks Available</p>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-gold">
+                  <i class="fa-solid fa-diamond-turn-right"></i> Open in Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter VIP Roaster Club -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="news-content">
+            <span class="news-pill"><i class="fa-solid fa-envelope-open-text"></i> The Roaster’s Journal</span>
+            <h3 class="news-title">Join The AURA Connoisseur Circle</h3>
+            <p class="news-desc">Receive secret micro-lot releases, invitation-only cupping nights, home barista brew guides, and <strong>15% off your first coffee bag</strong>.</p>
+          </div>
+          <form class="news-form" id="newsletterForm">
+            <div class="news-input-group">
+              <input type="email" id="newsEmailInput" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+              <button type="submit" class="btn btn-primary" id="newsSubmitBtn">
+                <span>Subscribe</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+            <small class="news-fineprint">No spam ever. Unsubscribe with 1-click anytime.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo footer-logo">
+            <div class="logo-symbol">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="logo-text">
+              <span class="brand-name">AURA</span>
+              <span class="brand-tagline">ROASTERY &amp; CAFÉ</span>
+            </div>
+          </a>
+          <p class="footer-bio">
+            An artisanal sanctuary elevating specialty coffee roasting, culinary viennoiserie, and community connection. Roasted daily in small batches with zero compromise.
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#story">Our Philosophy</a></li>
+            <li><a href="#menu">Seasonal Menu</a></li>
+            <li><a href="#brew-calculator">Brew Calculator</a></li>
+            <li><a href="#ambiance">Atmosphere &amp; Spaces</a></li>
+            <li><a href="#reservations">Reserve Table</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Coffee Origins</h4>
+          <ul>
+            <li><a href="#story">Ethiopia Yirgacheffe G1</a></li>
+            <li><a href="#story">Colombia Huila Geisha</a></li>
+            <li><a href="#story">Guatemala Antigua Bourbon</a></li>
+            <li><a href="#story">Kenya Nyeri Peaberry</a></li>
+            <li><a href="#story">Sumatra Mandheling</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Hospitality</h4>
+          <ul>
+            <li><a href="#contact">Private Cupping Events</a></li>
+            <li><a href="#contact">Corporate Coffee Catering</a></li>
+            <li><a href="#contact">Barista Training Academy</a></li>
+            <li><a href="#contact">Wholesale Inquiries</a></li>
+            <li><a href="#faq">Dietary Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 AURA Artisanal Roastery &amp; Café. All rights reserved. Crafted with passion for specialty coffee lovers.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Terms of Service</a>
+          <span>•</span>
+          <a href="#">Sustainability Report</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-In Cart & Order Drawer -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <h3>Your Order Bag</h3>
+        <span class="cart-header-count" id="drawerCartCount">(0 items)</span>
+      </div>
+      <button class="cart-close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <!-- Order Mode Toggle (Pickup vs Dine-in) -->
+    <div class="order-mode-toggle">
+      <button class="mode-btn active" data-mode="dine-in">
+        <i class="fa-solid fa-utensils"></i> Dine-In
+      </button>
+      <button class="mode-btn" data-mode="pickup">
+        <i class="fa-solid fa-person-walking"></i> Express Takeaway
+      </button>
+    </div>
+
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Empty Cart State -->
+      <div class="empty-cart-state" id="emptyCartState">
+        <div class="empty-cart-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+        <h4>Your bag is feeling light</h4>
+        <p>Explore our seasonal brews and warm bakery items to begin crafting your order.</p>
+        <a href="#menu" class="btn btn-sm btn-gold close-cart-link">Explore Menu</a>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Tip Selector -->
+      <div class="tip-selector-box">
+        <span class="tip-label">Barista Gratuity:</span>
+        <div class="tip-buttons">
+          <button class="tip-btn" data-tip="10">10%</button>
+          <button class="tip-btn active" data-tip="15">15%</button>
+          <button class="tip-btn" data-tip="20">20%</button>
+          <button class="tip-btn" data-tip="0">Custom</button>
+        </div>
+      </div>
+
+      <!-- Pricing Summary Breakdown -->
+      <div class="cart-summary-rows">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <div class="summary-line">
+          <span>Tax (8.25%)</span>
+          <strong id="cartTax">$0.00</strong>
+        </div>
+        <div class="summary-line">
+          <span>Gratuity (<span id="tipPercentageText">15%</span>)</span>
+          <strong id="cartTipAmount">$0.00</strong>
+        </div>
+        <div class="summary-line total-line">
+          <span>Total</span>
+          <strong class="total-price" id="cartGrandTotal">$0.00</strong>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-glow" id="checkoutBtn">
+        <span>Proceed to Checkout</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <small class="drawer-notice"><i class="fa-solid fa-bolt"></i> Prepared fresh upon order. Ready in ~8-12 mins.</small>
+    </div>
+  </aside>
+
+  <!-- Quick View / Customization Modal -->
+  <div class="modal-backdrop" id="itemModalBackdrop"></div>
+  <div class="custom-modal" id="itemCustomModal" role="dialog" aria-modal="true" aria-labelledby="modalItemTitle">
+    <button class="modal-close-btn" id="closeItemModalBtn" aria-label="Close modal">&times;</button>
+    <div class="modal-content-grid">
+      <div class="modal-img-col">
+        <img src="" alt="" id="modalItemImg" class="modal-product-img">
+        <div class="modal-tags" id="modalItemTags"></div>
+      </div>
+      <div class="modal-info-col">
+        <span class="modal-category" id="modalItemCategory">Espresso &amp; Brews</span>
+        <h3 class="modal-item-title" id="modalItemTitle">Spanish Velvet Latte</h3>
+        <p class="modal-item-price" id="modalItemPrice">$6.50</p>
+        <p class="modal-item-desc" id="modalItemDesc">Double shot of single origin espresso gently folded with condensed milk, whole milk, and Ceylon cinnamon dust.</p>
+
+        <!-- Customization Options -->
+        <div class="customizer-options" id="customizerOptions">
+          <!-- Size Selector -->
+          <div class="custom-group" id="sizeGroup">
+            <label class="custom-label">Serving Size</label>
+            <div class="option-pill-group">
+              <button class="option-pill active" data-option-type="size" data-val="Regular" data-price="0">Regular (12 oz)</button>
+              <button class="option-pill" data-option-type="size" data-val="Large" data-price="0.80">Large (16 oz) +$0.80</button>
+            </div>
+          </div>
+
+          <!-- Milk Selection -->
+          <div class="custom-group" id="milkGroup">
+            <label class="custom-label">Milk / Plant Base</label>
+            <div class="option-pill-group">
+              <button class="option-pill active" data-option-type="milk" data-val="Whole Milk">Organic Whole Milk</button>
+              <button class="option-pill" data-option-type="milk" data-val="Oat Milk (Oatly)">Oatly Barista Oat</button>
+              <button class="option-pill" data-option-type="milk" data-val="Almond Milk">House Almond</button>
+            </div>
+          </div>
+
+          <!-- Sweetness Level -->
+          <div class="custom-group" id="sweetnessGroup">
+            <label class="custom-label">Sweetness Level</label>
+            <div class="option-pill-group">
+              <button class="option-pill" data-option-type="sweetness" data-val="0%">Unsweetened (0%)</button>
+              <button class="option-pill active" data-option-type="sweetness" data-val="50%">Balanced (50%)</button>
+              <button class="option-pill" data-option-type="sweetness" data-val="100%">Full Sweet (100%)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add to Bag Action Row -->
+        <div class="modal-action-row">
+          <div class="quantity-stepper">
+            <button class="stepper-btn" id="modalQtyMinus" aria-label="Decrease quantity">&minus;</button>
+            <span class="stepper-val" id="modalQtyVal">1</span>
+            <button class="stepper-btn" id="modalQtyPlus" aria-label="Increase quantity">&plus;</button>
+          </div>
+          <button class="btn btn-primary btn-block btn-glow" id="modalAddToCartBtn">
+            <span>Add to Bag</span>
+            <span id="modalAddPrice">$6.50</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation Success Confirmation Modal -->
+  <div class="modal-backdrop" id="resSuccessBackdrop"></div>
+  <div class="custom-modal confirmation-modal" id="resSuccessModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="closeResSuccessBtn">&times;</button>
+    <div class="ticket-wrapper">
+      <div class="ticket-header">
+        <div class="success-check-ring"><i class="fa-solid fa-check"></i></div>
+        <h3>Table Reservation Confirmed!</h3>
+        <p>We are delighted to welcome you to AURA Roastery &amp; Café.</p>
+      </div>
+
+      <div class="ticket-body">
+        <div class="ticket-code-row">
+          <span>Confirmation Code</span>
+          <strong class="ticket-code" id="ticketCode">AUR-84920</strong>
+        </div>
+        <div class="ticket-details-grid">
+          <div>
+            <small>Guest Name</small>
+            <strong id="ticketGuestName">Elena Vance</strong>
+          </div>
+          <div>
+            <small>Party Size</small>
+            <strong id="ticketPartySize">2 Guests</strong>
+          </div>
+          <div>
+            <small>Date</small>
+            <strong id="ticketDate">Oct 28, 2026</strong>
+          </div>
+          <div>
+            <small>Time Slot</small>
+            <strong id="ticketTime">11:00 AM</strong>
+          </div>
+          <div class="grid-span-2">
+            <small>Seating Area</small>
+            <strong id="ticketZone">Main Roastery Bar</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-footer">
+        <p class="ticket-note"><i class="fa-solid fa-location-dot"></i> 418 St. Clair Avenue • Grace period: 15 mins</p>
+        <button class="btn btn-primary btn-block" id="finishResBtn">Got It, Thank You</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Success Modal / Digital Receipt -->
+  <div class="modal-backdrop" id="checkoutSuccessBackdrop"></div>
+  <div class="custom-modal confirmation-modal" id="checkoutSuccessModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="closeCheckoutSuccessBtn">&times;</button>
+    <div class="receipt-card">
+      <div class="receipt-header">
+        <div class="coffee-steam-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <h3>Order Sent To Barista Bar!</h3>
+        <p>Your ticket is now queued on our La Marzocco workstation.</p>
+        <div class="order-pickup-pill" id="orderModeBadge">Dine-In • Table Service</div>
+      </div>
+
+      <div class="receipt-body">
+        <div class="receipt-row-highlight">
+          <span>Order Number:</span>
+          <strong class="order-id-txt" id="orderNumberTxt">#AURA-492</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Estimated Prep Time:</span>
+          <strong>8 - 12 Minutes</strong>
+        </div>
+        <div class="receipt-items-summary" id="receiptItemsSummary">
+          <!-- Populated by JS -->
+        </div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-row total-paid">
+          <span>Total Paid:</span>
+          <strong class="paid-val" id="receiptTotalPaid">$0.00</strong>
+        </div>
+      </div>
+
+      <div class="receipt-actions">
+        <button class="btn btn-primary btn-block" id="closeReceiptBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
